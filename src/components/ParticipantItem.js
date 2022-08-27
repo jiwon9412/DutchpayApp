@@ -1,12 +1,12 @@
 import React from "react";
 import "./ParticipantItem.scss";
 
-const ParticipantItem = () => {
+const ParticipantItem = ({ name }) => {
   return (
     <div className='itemWrap'>
-      <div className='photo'></div>
-      <div className='name'>전석영</div>
-      <div className='price'>5,000</div>
+      <div className='icon'></div>
+      <div className='name'>{name}</div>
+      <div className='price'>???</div>
     </div>
   );
 };

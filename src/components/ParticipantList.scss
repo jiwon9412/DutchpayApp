@@ -16,15 +16,33 @@
       font-weight: 600;
     }
 
-    button {
-      border: 1px solid #9c9c9c;
-      background-color: #fff;
-      width: 50px;
-      height: 30px;
-      border-radius: 8px;
-      color: #000;
-      font-weight: 400;
-      cursor: pointer;
+    .addMember {
+      button {
+        border: 1px solid #9c9c9c;
+        background-color: #fff;
+        width: 50px;
+        height: 30px;
+        border-radius: 8px;
+        color: #000;
+        font-weight: 400;
+        cursor: pointer;
+        margin-left: 3px;
+
+        &:hover {
+          font-size: 14px;
+          font-weight: 700;
+          border: 2px solid #00b8dd;
+        }
+      }
+
+      input {
+        box-sizing: border-box;
+        border-style: none;
+        width: 100px;
+        height: 30px;
+        outline: none;
+        border-bottom: 1px solid #9c9c9c;
+      }
     }
   }
 }

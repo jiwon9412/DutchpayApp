@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./InputTotalPay.scss";
 
-const InputTotalPay = () => {
+const InputTotalPay = ({ changeTotalpay }) => {
+  const [totalpay, setTotalpay] = useState("");
+
+  const handleChange = useCallback((e) => {
+    setTotalpay(e.target.value);
+  }, []);
+
+  useEffect(() => {
+    changeTotalpay(totalpay);
+  }, [totalpay]);
+
   return (
     <div className='totalpay'>
-      <input placeholder='금액입력 (원)' />
-      <p> 1000원 이상부터 입력가능</p>
+      <input
+        placeholder='금액입력 (원)'
+        value={totalpay}
+        onChange={handleChange}
+      />
+      <p>
+        {totalpay >= 1000
+          ? `평균 값 : ${totalpay / 3} 원`
+          : "1000원 이상부터 입력가능"}
+      </p>
     </div>
   );
 };

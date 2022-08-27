@@ -1,10 +1,11 @@
 import React from "react";
 import "./StartButton.scss";
 
-const StartButton = () => {
+const StartButton = ({ buttonActive }) => {
+  console.log(buttonActive);
   return (
     <div className='startButton'>
-      <button>시작하기</button>
+      <button disabled={!buttonActive}>시작하기</button>
     </div>
   );
 };

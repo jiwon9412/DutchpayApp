@@ -3,4 +3,5 @@ body {
   padding: 0;
   background: #e9ecef;
   border-radius: 10px;
+  box-sizing: border-box;
 }
