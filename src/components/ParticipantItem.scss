@@ -1,0 +1,23 @@
+.itemWrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+  .photo {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #e3e3e3;
+  }
+
+  .name {
+    margin-left: 10px;
+    font-weight: 400;
+  }
+
+  .price {
+    margin-left: 265px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}

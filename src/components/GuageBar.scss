@@ -1,0 +1,98 @@
+.guagebarWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+
+  .degree {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .guagebar {
+    position: relative;
+    width: 400px;
+    height: 20px;
+    background-color: #e3e3e3;
+    border-radius: 10px;
+
+    .middle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background-color: #00b8dd;
+      border-radius: 10px;
+
+      &::after {
+        content: "2";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #00b8dd;
+        position: absolute;
+        top: -7.5px;
+        left: calc(100% - 15px);
+        border-radius: 50%;
+        background-color: #fff;
+        border: 2px solid #00b8dd;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .start {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 0%;
+      background-color: #00b8dd;
+      border-radius: 10px;
+
+      &::after {
+        content: "1";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #00b8dd;
+        position: absolute;
+        top: -7.5px;
+        left: calc(100% - 15px);
+        border-radius: 50%;
+        background-color: #fff;
+        border: 2px solid #00b8dd;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .end {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #00b8dd;
+      border-radius: 10px;
+
+      &::after {
+        content: "3";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #00b8dd;
+        position: absolute;
+        top: -7.5px;
+        left: calc(100% - 15px);
+        border-radius: 50%;
+        background-color: #fff;
+        border: 2px solid #00b8dd;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}

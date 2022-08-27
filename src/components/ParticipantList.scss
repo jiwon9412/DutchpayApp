@@ -1,0 +1,30 @@
+.participantList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      color: #9c9c9c;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    button {
+      border: 1px solid #9c9c9c;
+      background-color: #fff;
+      width: 50px;
+      height: 30px;
+      border-radius: 8px;
+      color: #000;
+      font-weight: 400;
+      cursor: pointer;
+    }
+  }
+}
