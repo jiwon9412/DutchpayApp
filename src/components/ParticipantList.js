@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./ParticipantList.scss";
 
 import ParticipantItem from "./ParticipantItem";
 
-const ParticipantList = () => {
+const ParticipantList = ({ getMemberCnt }) => {
   const [member, setMember] = useState("");
   const [memberList, setMemberList] = useState([]);
 
@@ -22,6 +22,10 @@ const ParticipantList = () => {
     },
     [member]
   );
+
+  useEffect(() => {
+    getMemberCnt(memberList.length);
+  }, [memberList]);
 
   return (
     <div className='participantList'>

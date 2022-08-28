@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./InputTotalPay.scss";
 
-const InputTotalPay = ({ changeTotalpay }) => {
+const InputTotalPay = ({ changeTotalpay, avgpay }) => {
   const [totalpay, setTotalpay] = useState("");
 
   const handleChange = useCallback((e) => {
@@ -21,7 +21,7 @@ const InputTotalPay = ({ changeTotalpay }) => {
       />
       <p>
         {totalpay >= 1000
-          ? `평균 값 : ${totalpay / 3} 원`
+          ? `평균 값 : ${avgpay} 원`
           : "1000원 이상부터 입력가능"}
       </p>
     </div>
