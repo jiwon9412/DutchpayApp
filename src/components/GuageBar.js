@@ -29,7 +29,11 @@ const GuageBar = () => {
 
   return (
     <div className='guagebarWrap'>
-      <div className='degree'>아찔하게</div>
+      <div className='degree'>
+        {(startVisible && "적당히") ||
+          (middleVisible && "아찔하게") ||
+          (endVisible && "무자비하게")}
+      </div>
       <div className='guagebar'>
         <div
           className={"start" + (startVisible ? " visible" : "")}
