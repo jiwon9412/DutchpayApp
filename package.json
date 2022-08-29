@@ -16,8 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "react-scripts build",
