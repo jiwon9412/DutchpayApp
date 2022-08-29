@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import "./GuageBar.scss";
 
-const GuageBar = () => {
+const GuageBar = ({ getGuage }) => {
   const [startVisible, setStartVisible] = useState(false);
   const [middleVisible, setMiddleVisible] = useState(true);
   const [endVisible, setEndVisible] = useState(false);
@@ -11,6 +11,7 @@ const GuageBar = () => {
     setStartVisible(true);
     setMiddleVisible(false);
     setEndVisible(false);
+    getGuage("start");
   };
 
   const clickMiddle = (e) => {
@@ -18,6 +19,7 @@ const GuageBar = () => {
     setStartVisible(false);
     setMiddleVisible(true);
     setEndVisible(false);
+    getGuage("middle");
   };
 
   const clickEnd = (e) => {
@@ -25,6 +27,7 @@ const GuageBar = () => {
     setStartVisible(false);
     setMiddleVisible(false);
     setEndVisible(true);
+    getGuage("end");
   };
 
   return (

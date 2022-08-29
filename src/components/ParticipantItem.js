@@ -6,7 +6,7 @@ const ParticipantItem = ({ name, pay }) => {
     <div className='itemWrap'>
       <div className='icon'></div>
       <div className='name'>{name}</div>
-      <div className='price'>{(pay && pay) || "???"}</div>
+      <div className='price'>{pay && Math.floor(pay)}</div>
     </div>
   );
 };

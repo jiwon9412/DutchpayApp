@@ -12,6 +12,7 @@ const App = () => {
   const [memberCnt, setMemberCnt] = useState(0);
   const [totalpay, setTotalpay] = useState(0);
   const [arrayPay, setArrayPay] = useState([]);
+  const [guage, setGuage] = useState("middle");
 
   const changeTotalpay = useCallback((totalpay) => {
     console.log("totalpay : " + totalpay);
@@ -33,81 +34,80 @@ const App = () => {
     }
   }, [memberCnt, totalpay]);
 
-  // useEffect(() => {
-  //   if (memberCnt > 1) {
-  //     let tempTotal = totalpay / 1000;
-  //     let tempRest = totalpay % 1000;
-  //     let arrPay = [];
-  //     let nextNum = 0;
-
-  //     const firstPay = Math.floor(Math.random() * tempTotal);
-  //     arrPay.push(firstPay * 1000);
-  //     let maxNum = tempTotal - firstPay;
-
-  //     for (let i = 1; i < memberCnt - 1; i++) {
-  //       nextNum = Math.floor(Math.random() * maxNum);
-  //       arrPay[i] = nextNum * 1000;
-  //       maxNum -= nextNum;
-  //       if (maxNum === 0) break;
-  //     }
-  //     arrPay.push(maxNum * 1000);
-
-  //     let maxPay = 0;
-  //     let maxIndex = 0;
-  //     arrPay.map((pay, index) => {
-  //       if (pay > maxPay) {
-  //         maxIndex = index;
-  //       }
-  //     });
-
-  //     arrPay[maxIndex] += tempRest;
-  //     console.log("arrPay : " + arrPay);
-
-  //     setArrayPay(arrPay);
-  //     console.log("arrayPay : " + arrayPay);
-  //   }
-  // }, [memberCnt]);
-
   const calculateDutchPay = useCallback(() => {
-    console.log("calculateDutchPay!!!!!!!!!!!!!!" + memberCnt);
+    //console.log("guage : " + guage);
     if (memberCnt > 1) {
-      let tempTotal = totalpay / 1000;
-      let tempRest = totalpay % 1000;
-      let arrPay = [];
-      let nextNum = 0;
+      if (guage === "start") {
+        let avgTotalPay = Math.floor(totalpay / (memberCnt * 1000));
+        let tempRest = totalpay % (memberCnt * 1000);
+        let arrPay = [];
 
-      const firstPay = Math.floor(Math.random() * tempTotal);
-      arrPay.push(firstPay * 1000);
-      let maxNum = tempTotal - firstPay;
+        for (let i = 0; i < memberCnt; i++) {
+          arrPay[i] = avgTotalPay * 1000;
+          if (i === memberCnt - 1) arrPay[i] += tempRest;
 
-      for (let i = 1; i < memberCnt - 1; i++) {
-        nextNum = Math.floor(Math.random() * maxNum);
-        arrPay[i] = nextNum * 1000;
-        maxNum -= nextNum;
-        if (maxNum === 0) break;
-      }
-      arrPay.push(maxNum * 1000);
-
-      let maxPay = 0;
-      let maxIndex = 0;
-      arrPay.map((pay, index) => {
-        if (pay > maxPay) {
-          maxIndex = index;
+          shuffle(arrPay);
+          setArrayPay(arrPay);
         }
-      });
+      } else {
+        let tempTotal = Math.floor(totalpay / 1000);
+        let tempRest = totalpay % 1000;
+        if (guage === "end") {
+          tempTotal = totalpay / 3000;
+          tempRest = totalpay - tempTotal * 1000;
+        }
+        //console.log(tempTotal);
+        //console.log(tempRest);
 
-      arrPay[maxIndex] += tempRest;
-      console.log("arrPay : " + arrPay);
+        let arrPay = [];
+        let nextNum = 0;
 
-      setArrayPay(arrPay);
-      console.log("arrayPay : " + arrayPay);
+        const firstPay = Math.floor(Math.random() * tempTotal);
+        arrPay.push(firstPay * 1000);
+        let maxNum = tempTotal - firstPay;
+
+        for (let i = 1; i < memberCnt - 1; i++) {
+          nextNum = Math.floor(Math.random() * maxNum);
+          arrPay[i] = nextNum * 1000;
+          maxNum -= nextNum;
+          if (maxNum === 0) break;
+        }
+        arrPay.push(maxNum * 1000);
+
+        let maxPay = 0;
+        let maxIndex = 0;
+        arrPay.map((pay, index) => {
+          if (pay > maxPay) {
+            maxIndex = index;
+          }
+        });
+
+        arrPay[maxIndex] += tempRest;
+        shuffle(arrPay);
+        setArrayPay(arrPay);
+      }
     }
-  }, [memberCnt, totalpay]);
+  }, [memberCnt, totalpay, guage]);
+
+  const getGuage = (value) => {
+    setGuage(value);
+  };
+
+  /**배열을 무작위로 섞어주는 함수 */
+  const shuffle = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const randomPosition = Math.floor(Math.random() * (i + 1));
+
+      const temp = array[i];
+      array[i] = array[randomPosition];
+      array[randomPosition] = temp;
+    }
+  };
 
   return (
     <DutchpayTemplate>
       <InputTotalPay changeTotalpay={changeTotalpay} avgpay={avgpay} />
-      <GuageBar />
+      <GuageBar getGuage={getGuage} />
       <ParticipantList getMemberCnt={getMemberCnt} arrayPay={arrayPay} />
       <StartButton
         buttonActive={buttonActive}
