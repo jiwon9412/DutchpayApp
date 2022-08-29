@@ -30,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
     if (totalpay > 0 && memberCnt > 0) {
-      setAvgpay(totalpay / memberCnt);
+      setAvgpay(Math.floor(totalpay / memberCnt));
     }
   }, [memberCnt, totalpay]);
 
@@ -40,22 +40,53 @@ const App = () => {
       if (guage === "start") {
         let avgTotalPay = Math.floor(totalpay / (memberCnt * 1000));
         let tempRest = totalpay % (memberCnt * 1000);
+        let tempRest2 = 0;
+        if (tempRest >= 1000) {
+          tempRest2 = Math.floor(tempRest / memberCnt);
+          tempRest = tempRest % memberCnt;
+        }
+
         let arrPay = [];
 
         for (let i = 0; i < memberCnt; i++) {
-          arrPay[i] = avgTotalPay * 1000;
+          arrPay[i] = avgTotalPay * 1000 + tempRest2;
           if (i === memberCnt - 1) arrPay[i] += tempRest;
-
-          shuffle(arrPay);
-          setArrayPay(arrPay);
         }
-      } else {
+        shuffle(arrPay);
+        setArrayPay(arrPay);
+      } else if (guage === "middle") {
         let tempTotal = Math.floor(totalpay / 1000);
         let tempRest = totalpay % 1000;
-        if (guage === "end") {
-          tempTotal = totalpay / 3000;
-          tempRest = totalpay - tempTotal * 1000;
+        let arrPay = [];
+        let nextNum = 0;
+
+        const firstPay = Math.floor(Math.random() * tempTotal);
+        arrPay.push(firstPay * 1000);
+        let maxNum = tempTotal - firstPay;
+
+        for (let i = 1; i < memberCnt - 1; i++) {
+          nextNum = Math.floor(Math.random() * maxNum);
+          arrPay[i] = nextNum * 1000;
+          maxNum -= nextNum;
+          if (maxNum === 0) break;
         }
+        arrPay.push(maxNum * 1000);
+
+        let maxPay = 0;
+        let maxIndex = 0;
+        arrPay.map((pay, index) => {
+          if (pay > maxPay) {
+            maxIndex = index;
+          }
+        });
+
+        arrPay[maxIndex] += tempRest;
+        shuffle(arrPay);
+        setArrayPay(arrPay);
+      } else {
+        let tempTotal = Math.floor(totalpay / 3000);
+        let tempRest = totalpay - tempTotal * 1000;
+
         //console.log(tempTotal);
         //console.log(tempRest);
 
