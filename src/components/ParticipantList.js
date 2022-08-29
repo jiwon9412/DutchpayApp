@@ -3,7 +3,7 @@ import "./ParticipantList.scss";
 
 import ParticipantItem from "./ParticipantItem";
 
-const ParticipantList = ({ getMemberCnt }) => {
+const ParticipantList = ({ getMemberCnt, arrayPay }) => {
   const [member, setMember] = useState("");
   const [memberList, setMemberList] = useState([]);
 
@@ -42,7 +42,7 @@ const ParticipantList = ({ getMemberCnt }) => {
       </div>
       <div className='list'>
         {memberList.map((member, index) => (
-          <ParticipantItem name={member} key={index} />
+          <ParticipantItem name={member} key={index} pay={arrayPay[index]} />
         ))}
       </div>
     </div>

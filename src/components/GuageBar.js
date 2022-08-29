@@ -7,21 +7,21 @@ const GuageBar = () => {
   const [endVisible, setEndVisible] = useState(false);
 
   const clickStart = (e) => {
-    console.log("start");
+    //console.log("start");
     setStartVisible(true);
     setMiddleVisible(false);
     setEndVisible(false);
   };
 
   const clickMiddle = (e) => {
-    console.log("middle");
+    //console.log("middle");
     setStartVisible(false);
     setMiddleVisible(true);
     setEndVisible(false);
   };
 
   const clickEnd = (e) => {
-    console.log("end");
+    //console.log("end");
     setStartVisible(false);
     setMiddleVisible(false);
     setEndVisible(true);
