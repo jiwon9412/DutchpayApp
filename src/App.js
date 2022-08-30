@@ -37,6 +37,7 @@ const App = () => {
   const calculateDutchPay = useCallback(() => {
     //console.log("guage : " + guage);
     if (memberCnt > 1) {
+      let arrPay = [];
       if (guage === "start") {
         let avgTotalPay = Math.floor(totalpay / (memberCnt * 1000));
         let tempRest = totalpay % (memberCnt * 1000);
@@ -46,8 +47,6 @@ const App = () => {
           tempRest = tempRest % memberCnt;
         }
 
-        let arrPay = [];
-
         for (let i = 0; i < memberCnt; i++) {
           arrPay[i] = avgTotalPay * 1000 + tempRest2;
           if (i === memberCnt - 1) arrPay[i] += tempRest;
@@ -55,32 +54,36 @@ const App = () => {
         shuffle(arrPay);
         setArrayPay(arrPay);
       } else if (guage === "middle") {
-        let tempTotal = Math.floor(totalpay / 1000);
-        let tempRest = totalpay % 1000;
-        let arrPay = [];
-        let nextNum = 0;
+        let minFirstPayRate = 1 / 2;
+        let maxFirstPayRate = 3 / 5;
+        let firstPay = makeRandom(minFirstPayRate, maxFirstPayRate) * totalpay;
+        firstPay = Math.floor(firstPay / 100) * 100;
+        console.log("firstPay : " + firstPay);
+        let restPay = totalpay - firstPay;
+        arrPay.push(firstPay);
 
-        const firstPay = Math.floor(Math.random() * tempTotal);
-        arrPay.push(firstPay * 1000);
-        let maxNum = tempTotal - firstPay;
+        if (memberCnt > 3) {
+          for (let i = 0; i < memberCnt - 2; i++) {
+            let minPayRate = 1 / 2;
+            let maxPayRate = 3 / 5;
 
-        for (let i = 1; i < memberCnt - 1; i++) {
-          nextNum = Math.floor(Math.random() * maxNum);
-          arrPay[i] = nextNum * 1000;
-          maxNum -= nextNum;
-          if (maxNum === 0) break;
-        }
-        arrPay.push(maxNum * 1000);
-
-        let maxPay = 0;
-        let maxIndex = 0;
-        arrPay.map((pay, index) => {
-          if (pay > maxPay) {
-            maxIndex = index;
+            let tempPay = makeRandom(minPayRate, maxPayRate) * restPay;
+            // console.log("restPay : " + restPay);
+            // console.log("tempPay : " + tempPay);
+            tempPay = Math.floor(tempPay / 100) * 100;
+            arrPay.push(tempPay);
+            restPay -= tempPay;
           }
-        });
+        }
 
-        arrPay[maxIndex] += tempRest;
+        let lastPay = restPay;
+        lastPay = Math.floor(lastPay / 100) * 100;
+        const reducer = (acc, curr) => acc + curr;
+        const arraySum = arrPay.reduce(reducer);
+        let dummyPay = totalpay - arraySum;
+        arrPay[0] += dummyPay;
+        arrPay.push(lastPay);
+        console.log(arrPay);
         shuffle(arrPay);
         setArrayPay(arrPay);
       } else {
@@ -90,7 +93,6 @@ const App = () => {
         //console.log(tempTotal);
         //console.log(tempRest);
 
-        let arrPay = [];
         let nextNum = 0;
 
         const firstPay = Math.floor(Math.random() * tempTotal);
@@ -133,6 +135,11 @@ const App = () => {
       array[i] = array[randomPosition];
       array[randomPosition] = temp;
     }
+  };
+
+  const makeRandom = (min, max) => {
+    let randomVal = Math.random() * (max - min) + min;
+    return randomVal;
   };
 
   return (
