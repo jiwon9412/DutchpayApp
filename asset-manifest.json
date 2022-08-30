@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/DutchpayApp/static/css/main.e5235811.css",
-    "main.js": "/DutchpayApp/static/js/main.2da1b472.js",
+    "main.js": "/DutchpayApp/static/js/main.c6e2667c.js",
     "static/js/787.4cd52b1b.chunk.js": "/DutchpayApp/static/js/787.4cd52b1b.chunk.js",
     "index.html": "/DutchpayApp/index.html",
     "main.e5235811.css.map": "/DutchpayApp/static/css/main.e5235811.css.map",
-    "main.2da1b472.js.map": "/DutchpayApp/static/js/main.2da1b472.js.map",
+    "main.c6e2667c.js.map": "/DutchpayApp/static/js/main.c6e2667c.js.map",
     "787.4cd52b1b.chunk.js.map": "/DutchpayApp/static/js/787.4cd52b1b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e5235811.css",
-    "static/js/main.2da1b472.js"
+    "static/js/main.c6e2667c.js"
   ]
 }
