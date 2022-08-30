@@ -6,6 +6,7 @@ const GuageBar = ({ getGuage }) => {
   const [middleVisible, setMiddleVisible] = useState(true);
   const [endVisible, setEndVisible] = useState(false);
 
+  /**게이지 부분 클릭 시 이벤트 */
   const clickStart = (e) => {
     //console.log("start");
     setStartVisible(true);

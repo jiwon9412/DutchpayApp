@@ -14,6 +14,7 @@ const App = () => {
   const [arrayPay, setArrayPay] = useState([]);
   const [guage, setGuage] = useState("middle");
 
+  /**전체 금액이 1000원이상이 되면 start버튼 활성화해주는 함수 */
   const changeTotalpay = useCallback((totalpay) => {
     console.log("totalpay : " + totalpay);
     if (totalpay >= 1000) {
@@ -24,16 +25,21 @@ const App = () => {
     setTotalpay(totalpay);
   }, []);
 
+  /**참여자 수를 받아와서 state세팅해주는 함수 */
   const getMemberCnt = useCallback((cnt) => {
     setMemberCnt(cnt);
   }, []);
 
+  /**참여자 수나 전체 금액이 바뀌면 평균값을 구해주는 함수 */
   useEffect(() => {
     if (totalpay > 0 && memberCnt > 0) {
       setAvgpay(Math.floor(totalpay / memberCnt));
     }
   }, [memberCnt, totalpay]);
 
+  /**더치페이 계산해주는 함수
+   * 게이지 상태에 따라서 세가지 계산법이 존재
+   */
   const calculateDutchPay = useCallback(() => {
     //console.log("guage : " + guage);
     if (memberCnt > 1) {
@@ -137,6 +143,7 @@ const App = () => {
     }
   };
 
+  /**지정한 범위 내에서 랜덤 배열을 만들어주는 함수 */
   const makeRandom = (min, max) => {
     let randomVal = Math.random() * (max - min) + min;
     return randomVal;
