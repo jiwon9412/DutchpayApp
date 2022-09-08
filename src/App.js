@@ -68,18 +68,16 @@ const App = () => {
         let restPay = totalpay - firstPay;
         arrPay.push(firstPay);
 
-        if (memberCnt > 3) {
-          for (let i = 0; i < memberCnt - 2; i++) {
-            let minPayRate = 1 / 2;
-            let maxPayRate = 3 / 5;
+        for (let i = 0; i < memberCnt - 2; i++) {
+          let minPayRate = 1 / 2;
+          let maxPayRate = 3 / 5;
 
-            let tempPay = makeRandom(minPayRate, maxPayRate) * restPay;
-            // console.log("restPay : " + restPay);
-            // console.log("tempPay : " + tempPay);
-            tempPay = Math.floor(tempPay / 100) * 100;
-            arrPay.push(tempPay);
-            restPay -= tempPay;
-          }
+          let tempPay = makeRandom(minPayRate, maxPayRate) * restPay;
+          // console.log("restPay : " + restPay);
+          // console.log("tempPay : " + tempPay);
+          tempPay = Math.floor(tempPay / 100) * 100;
+          arrPay.push(tempPay);
+          restPay -= tempPay;
         }
 
         let lastPay = restPay;

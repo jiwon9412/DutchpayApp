@@ -14,7 +14,7 @@ const ParticipantList = ({ getMemberCnt, arrayPay }) => {
   const handleSubmit = useCallback(
     (e) => {
       const newList = [...memberList, member];
-      console.log(newList);
+      //console.log(newList);
       setMemberList(newList);
       setMember("");
 
