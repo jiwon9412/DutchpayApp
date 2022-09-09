@@ -3,7 +3,7 @@ import "./ParticipantList.scss";
 
 import ParticipantItem from "./ParticipantItem";
 
-const ParticipantList = ({ getMemberCnt, arrayPay }) => {
+const ParticipantList = ({ getMemberCnt, arrayPay, max, min }) => {
   const [member, setMember] = useState("");
   const [memberList, setMemberList] = useState([]);
 
@@ -17,7 +17,6 @@ const ParticipantList = ({ getMemberCnt, arrayPay }) => {
       //console.log(newList);
       setMemberList(newList);
       setMember("");
-
       e.preventDefault();
     },
     [member]
@@ -42,7 +41,18 @@ const ParticipantList = ({ getMemberCnt, arrayPay }) => {
       </div>
       <div className='list'>
         {memberList.map((member, index) => (
-          <ParticipantItem name={member} key={index} pay={arrayPay[index]} />
+          <ParticipantItem
+            name={member}
+            key={index}
+            pay={arrayPay[index]}
+            rank={
+              arrayPay[index] === max
+                ? "boom"
+                : arrayPay[index] === min
+                ? "lucky"
+                : "soso"
+            }
+          />
         ))}
       </div>
     </div>

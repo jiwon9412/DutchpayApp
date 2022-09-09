@@ -21,7 +21,7 @@ const InputTotalPay = ({ changeTotalpay, avgpay }) => {
       />
       <p>
         {totalpay >= 1000
-          ? `평균 값 : ${avgpay} 원`
+          ? `평균 값 : ${avgpay.toLocaleString()} 원`
           : "1000원 이상부터 입력가능"}
       </p>
     </div>

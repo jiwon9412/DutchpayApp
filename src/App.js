@@ -13,6 +13,8 @@ const App = () => {
   const [totalpay, setTotalpay] = useState(0);
   const [arrayPay, setArrayPay] = useState([]);
   const [guage, setGuage] = useState("middle");
+  const [maxValue, setMaxValue] = useState(0);
+  const [minValue, setMinValue] = useState(0);
 
   /**전체 금액이 1000원이상이 되면 start버튼 활성화해주는 함수 */
   const changeTotalpay = useCallback((totalpay) => {
@@ -82,12 +84,13 @@ const App = () => {
 
         let lastPay = restPay;
         lastPay = Math.floor(lastPay / 100) * 100;
+        arrPay.push(lastPay);
+
         const reducer = (acc, curr) => acc + curr;
         const arraySum = arrPay.reduce(reducer);
         let dummyPay = totalpay - arraySum;
         arrPay[0] += dummyPay;
-        arrPay.push(lastPay);
-        console.log(arrPay);
+
         shuffle(arrPay);
         setArrayPay(arrPay);
       } else {
@@ -126,6 +129,11 @@ const App = () => {
     }
   }, [memberCnt, totalpay, guage]);
 
+  useEffect(() => {
+    setMaxValue(getMaxValue(arrayPay));
+    setMinValue(getMinValue(arrayPay));
+  }, [arrayPay]);
+
   const getGuage = (value) => {
     setGuage(value);
   };
@@ -147,11 +155,34 @@ const App = () => {
     return randomVal;
   };
 
+  /** 배열에서 최댓값 return 하는 함수 */
+  const getMaxValue = (arr) => {
+    let maxValue = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] >= maxValue) maxValue = arr[i];
+    }
+    return maxValue;
+  };
+
+  /** 배열에서 최소값 return 하는 함수 */
+  const getMinValue = (arr) => {
+    let minValue = Infinity;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] <= minValue) minValue = arr[i];
+    }
+    return minValue;
+  };
+
   return (
     <DutchpayTemplate>
       <InputTotalPay changeTotalpay={changeTotalpay} avgpay={avgpay} />
       <GuageBar getGuage={getGuage} />
-      <ParticipantList getMemberCnt={getMemberCnt} arrayPay={arrayPay} />
+      <ParticipantList
+        getMemberCnt={getMemberCnt}
+        arrayPay={arrayPay}
+        max={maxValue}
+        min={minValue}
+      />
       <StartButton
         buttonActive={buttonActive}
         calculateDutchPay={calculateDutchPay}
