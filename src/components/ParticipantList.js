@@ -47,7 +47,7 @@ const ParticipantList = ({ getMemberCnt, arrayPay, max, min }) => {
             pay={arrayPay[index]}
             rank={
               arrayPay[index] === max
-                ? "boom"
+                ? "bomb"
                 : arrayPay[index] === min
                 ? "lucky"
                 : "soso"
