@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# DutchPay App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+카카오페이의 사다리 타기 기능을 보며 비슷한 앱을 만들어 보고 싶어서 진행한 프로젝트이다.
+리액트를 배우기 시작하며 DB가 필요하지 않은 간단한 토이 프로젝트를 통해서 리액트 연습을 하고 싶던 찰나에 적합했던 프로젝트였다.
 
-## Available Scripts
+***
 
-In the project directory, you can run:
+### 기능
+1. 게이지 바를 통한 난이도 조절   
 
-### `yarn start`
+![image](https://user-images.githubusercontent.com/80965224/192477484-9f589f78-6867-4b43-8dec-05793d51f9d8.png)
+![image](https://user-images.githubusercontent.com/80965224/192477420-5aace71a-163c-4f5c-b31a-423cac14e0e0.png)
+![image](https://user-images.githubusercontent.com/80965224/192477513-d77eb78a-4850-4f9e-a7a0-fef2485bbe32.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. 1000원 이상 입력 시 시작버튼 활성화   
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![image](https://user-images.githubusercontent.com/80965224/192477657-09fdc8dd-49a7-4e0d-ba05-8eca0acf789c.png)
 
-### `yarn test`
+3. 난이도에 맞게 1/N 으로 금액 나누기  
+4. 최소금액, 최대금액 표시   
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://user-images.githubusercontent.com/80965224/192477936-78d63f03-4516-41a8-afd5-ffdd818e6fad.png)
 
-### `yarn build`
+***
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### css 방식
+* scss 사용 - 이 전에 styled component(css in JS)를 사용해보면서 js파일과 css파일이 분리되어있지 않아서 느꼈던 불편함이 있어서 scss 방식으로 프로젝트를 진행했다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+***
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Github 무료 웹 호스팅 서비스를 통해 배포
+* https://jiwon9412.github.io/DutchpayApp/
