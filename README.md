@@ -8,18 +8,17 @@
 ### 기능
 1. 게이지 바를 통한 난이도 조절   
 
-![image](https://user-images.githubusercontent.com/80965224/192477484-9f589f78-6867-4b43-8dec-05793d51f9d8.png)
-![image](https://user-images.githubusercontent.com/80965224/192477420-5aace71a-163c-4f5c-b31a-423cac14e0e0.png)
-![image](https://user-images.githubusercontent.com/80965224/192477513-d77eb78a-4850-4f9e-a7a0-fef2485bbe32.png)
+<img src="https://user-images.githubusercontent.com/80965224/192480878-cebc059c-7982-4d45-8c19-39bf8fc4b48a.png"> &nbsp;&nbsp; <img src="https://user-images.githubusercontent.com/80965224/192480828-eb1f4c83-efae-46bf-b7cb-c5f3c2f8c9c1.png"> &nbsp;&nbsp; <img src="https://user-images.githubusercontent.com/80965224/192480910-a1ff4a88-0fdf-4e70-9201-365158a80878.png">
+
 
 2. 1000원 이상 입력 시 시작버튼 활성화   
 
-![image](https://user-images.githubusercontent.com/80965224/192477657-09fdc8dd-49a7-4e0d-ba05-8eca0acf789c.png)
+<img src="https://user-images.githubusercontent.com/80965224/192480633-c6c1a598-9d10-4728-a2d2-019bea0fc9f2.png">
 
 3. 난이도에 맞게 1/N 으로 금액 나누기  
-4. 최소금액, 최대금액 표시   
+4. 최소금액, 최대금액 표시  
 
-![image](https://user-images.githubusercontent.com/80965224/192477936-78d63f03-4516-41a8-afd5-ffdd818e6fad.png)
+<img src="https://user-images.githubusercontent.com/80965224/192480404-c7bd0558-fd7f-4e31-82d3-cee84ec6ef17.png">
 
 ***
 
